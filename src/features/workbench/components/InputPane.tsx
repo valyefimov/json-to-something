@@ -76,6 +76,14 @@ export function InputPane({
             >
               <PanelRight size={15} />
             </button>
+            <button
+              type="button"
+              onClick={onClear}
+              title="Clear input"
+              className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-[15px] [&_svg]:shrink-0"
+            >
+              <Trash2 size={15} />
+            </button>
           </div>
         </div>
         <div>
@@ -86,14 +94,6 @@ export function InputPane({
             {status}
           </p>
         </div>
-        <button
-          type="button"
-          className="inline-flex h-10 w-10 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
-          onClick={onClear}
-          title="Clear input"
-        >
-          <Trash2 size={17} />
-        </button>
       </div>
       <label htmlFor="json-input" className="sr-only">
         {mode === 'types' ? 'JSON input' : 'YAML input'}
