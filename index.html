@@ -10,58 +10,87 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta
       name="description"
-      content="JSON-to-Something is a free online converter for JSON to TypeScript, Zod, and JSON Schema, plus YAML to Nginx and Envoy configs. Private, fast, and fully client-side."
+      content="Convert JSON objects to TypeScript types, Zod, and JSON Schema with support for nullable fields and string values, plus YAML to Nginx and Envoy."
     />
     <meta
       name="keywords"
       content="json to typescript,json to zod,json schema generator,yaml to nginx,yaml to envoy,typescript interface generator,zod schema generator,config converter,developer tools"
     />
-    <link rel="canonical" href="https://json-to-something.com/" />
+    <link rel="canonical" href="https://json2smth.yefimov.tech/" />
+    <link rel="alternate" href="https://json2smth.yefimov.tech/" hreflang="x-default" />
+    <link rel="alternate" href="https://json2smth.yefimov.tech/" hreflang="en" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="JSON-to-Something" />
     <meta
       property="og:title"
-      content="JSON-to-Something: JSON to TypeScript, Zod, YAML to Nginx/Envoy"
+      content="JSON-to-Something | JSON to TypeScript, Zod, YAML Converter"
     />
     <meta
       property="og:description"
-      content="Free dev tool: convert JSON to TypeScript, Zod, and JSON Schema, and YAML to Nginx/Envoy. Runs locally in your browser."
+      content="Convert JSON objects to TypeScript types, Zod, and JSON Schema with support for nullable fields and string values, plus YAML to Nginx and Envoy."
     />
-    <meta property="og:url" content="https://json-to-something.com/" />
-    <meta property="og:image" content="https://json-to-something.com/og-image.png" />
+    <meta property="og:url" content="https://json2smth.yefimov.tech/" />
+    <meta property="og:image" content="https://json2smth.yefimov.tech/og-image.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@valyefimov" />
+    <meta name="twitter:creator" content="@valyefimov" />
     <meta
       name="twitter:title"
-      content="JSON-to-Something: JSON to TypeScript, Zod, YAML to Nginx/Envoy"
+      content="JSON-to-Something | JSON to TypeScript, Zod, YAML Converter"
     />
     <meta
       name="twitter:description"
-      content="Convert JSON to TS/Zod/Schema and YAML to Nginx/Envoy in one free client-side tool."
+      content="Convert JSON objects to TypeScript types, Zod, and JSON Schema with support for nullable fields and string values, plus YAML to Nginx and Envoy."
     />
-    <meta name="twitter:image" content="https://json-to-something.com/og-image.png" />
+    <meta name="twitter:image" content="https://json2smth.yefimov.tech/og-image.png" />
 
-    <title>JSON-to-Something | JSON to TypeScript, Zod, YAML to Nginx/Envoy</title>
+    <title>JSON-to-Something | JSON to TypeScript, Zod, YAML Converter</title>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9VDYQ451H1"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
+      (function initDeferredGtag() {
+        const GA_ID = 'G-9VDYQ451H1';
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function gtag() {
+          window.dataLayer.push(arguments);
+        };
 
-      gtag('config', 'G-9VDYQ451H1');
+        function loadGtagScript() {
+          if (document.querySelector('script[data-ga-loader="true"]')) return;
+
+          const script = document.createElement('script');
+          script.async = true;
+          script.dataset.gaLoader = 'true';
+          script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+          document.head.appendChild(script);
+
+          window.gtag('js', new Date());
+          window.gtag('config', GA_ID);
+        }
+
+        function deferLoad() {
+          if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(loadGtagScript, { timeout: 3000 });
+            return;
+          }
+          window.setTimeout(loadGtagScript, 1500);
+        }
+
+        if (document.readyState === 'complete') {
+          deferLoad();
+          return;
+        }
+
+        window.addEventListener('load', deferLoad, { once: true });
+      })();
     </script>
-
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "JSON-to-Something",
-        "url": "https://json-to-something.com/",
+        "url": "https://json2smth.yefimov.tech/",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Any",
         "isAccessibleForFree": true,
