@@ -56,28 +56,25 @@ export function InputPane({
               type="button"
               onClick={onPaste}
               title="Paste JSON"
-              className="inline-flex h-9 cursor-pointer items-center justify-center gap-1.5 whitespace-nowrap rounded-lg bg-primary px-3 text-[13px] font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 max-[980px]:px-2.5 [&_svg]:pointer-events-none [&_svg]:size-[15px] [&_svg]:shrink-0"
+              className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-primary text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-[15px] [&_svg]:shrink-0"
             >
               <Clipboard size={15} />
-              <span className="max-[980px]:hidden">Paste</span>
             </button>
             <button
               type="button"
               onClick={onFormat}
               title="Format JSON"
-              className="inline-flex h-9 cursor-pointer items-center justify-center gap-1.5 whitespace-nowrap rounded-lg px-3 text-[13px] font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 max-[980px]:px-2.5 [&_svg]:pointer-events-none [&_svg]:size-[15px] [&_svg]:shrink-0"
+              className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-[15px] [&_svg]:shrink-0"
             >
               <Wand2 size={15} />
-              <span className="max-[980px]:hidden">Format</span>
             </button>
             <button
               type="button"
               onClick={onMinify}
               title="Minify JSON"
-              className="inline-flex h-9 cursor-pointer items-center justify-center gap-1.5 whitespace-nowrap rounded-lg px-3 text-[13px] font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 max-[980px]:px-2.5 [&_svg]:pointer-events-none [&_svg]:size-[15px] [&_svg]:shrink-0"
+              className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-[15px] [&_svg]:shrink-0"
             >
               <PanelRight size={15} />
-              <span className="max-[980px]:hidden">Minify</span>
             </button>
           </div>
         </div>
