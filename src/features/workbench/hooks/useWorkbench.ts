@@ -4,20 +4,9 @@ import 'prismjs/components/prism-nginx';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-yaml';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import type { HistoryItem, Mode, OutputTab, Theme } from '@/features/workbench/types';
-import {
-  CONFIG_TABS,
-  HISTORY_KEY,
-  INITIAL_JSON_INPUT,
-  THEME_KEY,
-  TYPE_TABS,
-  YAML_EXAMPLE
-} from '@/features/workbench/constants';
-import {
-  buildHistoryLabel,
-  getDownloadExtension,
-  getOutputLanguage
-} from '@/features/workbench/viewModel';
+import type { Mode, OutputTab, Theme } from '@/features/workbench/types';
+import { CONFIG_TABS, INITIAL_JSON_INPUT, THEME_KEY, TYPE_TABS, YAML_EXAMPLE } from '@/features/workbench/constants';
+import { getDownloadExtension, getOutputLanguage } from '@/features/workbench/viewModel';
 import {
   generateEnvoyConfig,
   generateNginxConfig,
@@ -43,7 +32,6 @@ export function useWorkbench() {
   const [input, setInput] = useState(hashState?.input ?? INITIAL_JSON_INPUT);
   const [options, setOptions] = useState<GeneratorOptions>(hashState?.options ?? defaultOptions);
   const [activeTab, setActiveTab] = useState<OutputTab>('typescript');
-  const [history, setHistory] = useState<HistoryItem[]>(() => safeReadStorage(HISTORY_KEY, []));
   const [outputCopied, setOutputCopied] = useState(false);
   const [theme, setTheme] = useState<Theme>(() => safeReadStorage(THEME_KEY, 'dark'));
   const [status, setStatus] = useState('Ready');
@@ -86,10 +74,6 @@ export function useWorkbench() {
     document.documentElement.dataset.theme = theme;
     safeWriteStorage(THEME_KEY, theme);
   }, [theme]);
-
-  useEffect(() => {
-    safeWriteStorage(HISTORY_KEY, history);
-  }, [history]);
 
   useEffect(() => {
     const encoded = encodeState({ input, options });
@@ -181,19 +165,6 @@ export function useWorkbench() {
     }
   }, [input, options]);
 
-  const saveHistory = useCallback((value: unknown) => {
-    const item: HistoryItem = {
-      createdAt: new Date().toISOString(),
-      id: crypto.randomUUID(),
-      input: JSON.stringify(value, null, 2),
-      label: buildHistoryLabel(value)
-    };
-
-    setHistory((current) =>
-      [item, ...current.filter((entry) => entry.input !== item.input)].slice(0, 8)
-    );
-  }, []);
-
   const formatInput = useCallback(() => {
     const next = mode === 'types' ? parseJsonInput(input) : parseYamlInput(input);
     if (!next.ok) {
@@ -202,14 +173,12 @@ export function useWorkbench() {
     }
     if (mode === 'types') {
       setInput(JSON.stringify(next.value, null, 2));
-      saveHistory(next.value);
       setStatus('Formatted JSON');
       return;
     }
     setInput(stringifyNormalizedConfig(normalizeConfig(next.value)));
-    saveHistory(next.value);
     setStatus('Formatted YAML');
-  }, [input, mode, saveHistory]);
+  }, [input, mode]);
 
   const minifyInput = useCallback(() => {
     const next = mode === 'types' ? parseJsonInput(input) : parseYamlInput(input);
@@ -219,14 +188,12 @@ export function useWorkbench() {
     }
     if (mode === 'types') {
       setInput(JSON.stringify(next.value));
-      saveHistory(next.value);
       setStatus('Minified JSON');
       return;
     }
     setInput(stringifyNormalizedConfig(normalizeConfig(next.value)).trim());
-    saveHistory(next.value);
     setStatus('Compacted YAML');
-  }, [input, mode, saveHistory]);
+  }, [input, mode]);
 
   useEffect(() => {
     function isEditableElement(target: EventTarget | null): boolean {
@@ -298,34 +265,16 @@ export function useWorkbench() {
     setStatus('Downloaded output');
   }
 
-  function loadHistoryItem(item: HistoryItem) {
-    setInput(item.input);
-  }
-
-  function deleteHistoryItem(id: string) {
-    setHistory((current) => current.filter((item) => item.id !== id));
-    setStatus('History entry removed');
-  }
-
-  function clearHistory() {
-    setHistory([]);
-    setStatus('Local history cleared');
-  }
-
   return {
     activeTab,
     availableTabs,
-    clearHistory,
     clearInput,
     copyOutput,
-    deleteHistoryItem,
     downloadOutput,
     formatInput,
     highlightedOutput,
-    history,
     input,
     inputLanguage,
-    loadHistoryItem,
     minifyInput,
     mode,
     options,

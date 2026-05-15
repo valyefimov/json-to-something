@@ -1,7 +1,6 @@
 import type { OutputTab } from '@/features/workbench/types';
 import { examples } from '@/lib/examples';
 
-export const HISTORY_KEY = 'json-to-something:history';
 export const THEME_KEY = 'json-to-something:theme';
 export const CODE_FONT = "'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace";
 

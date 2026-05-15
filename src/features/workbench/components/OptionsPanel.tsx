@@ -14,13 +14,13 @@ export function OptionsPanel({ mode, onUpdateOption, options }: OptionsPanelProp
   return (
     <div className="min-w-0 rounded-xl border bg-card text-card-foreground shadow">
       <div className="space-y-3.5 p-6">
-        <h2 className="text-2xl font-semibold leading-none tracking-tight">Options</h2>
+        <h2 className="text-xl font-semibold leading-tight tracking-normal">Options</h2>
         {mode === 'types' ? (
           <>
             <label className="grid gap-2 text-sm text-muted-foreground">
               <span>Root type name</span>
               <input
-                className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                 value={options.rootName}
                 onChange={(event) => onUpdateOption('rootName', event.target.value)}
               />

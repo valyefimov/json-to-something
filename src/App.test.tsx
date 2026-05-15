@@ -24,8 +24,13 @@ describe('App', () => {
     expect(screen.getByRole('textbox', { name: 'JSON input' })).toBeInTheDocument();
     expect(screen.getByRole('tab', { name: 'TypeScript' })).toBeInTheDocument();
     expect(screen.getByLabelText('Generated output')).toHaveTextContent('export interface Root');
-    expect(screen.getByText('Hotkeys')).toBeInTheDocument();
-    expect(screen.getByText('Ctrl/Cmd+Enter')).toBeInTheDocument();
+    expect(screen.queryByText('Local history')).not.toBeInTheDocument();
+    expect(screen.queryByText(/Hotkeys:/)).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByTitle('Show instructions'));
+
+    expect(screen.getByText(/Your data stays local/)).toBeInTheDocument();
+    expect(screen.getByText(/Hotkeys: Ctrl\/Cmd\+Enter/)).toBeInTheDocument();
     expect(screen.getByText(/Created by Valentyn Yefimov/)).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Open source on GitHub' })).toHaveAttribute(
       'href',
@@ -44,18 +49,12 @@ describe('App', () => {
     expect(screen.getByLabelText('Generated output')).toHaveTextContent('upstream users_api');
   });
 
-  it('formats input into local history and can remove it', () => {
+  it('formats input and updates the editor output', () => {
     render(<App />);
 
     fireEvent.click(screen.getByRole('button', { name: 'Format' }));
 
-    expect(screen.getByRole('button', { name: /active, createdAt, email/i })).toBeInTheDocument();
-
-    fireEvent.click(screen.getByTitle('Delete history entry'));
-
-    expect(
-      screen.getByText('Format or minify valid JSON to save a local entry.')
-    ).toBeInTheDocument();
+    expect(screen.getByLabelText('Generated output')).toHaveTextContent('export interface Root');
   });
 
   it('copies generated output to the clipboard', async () => {

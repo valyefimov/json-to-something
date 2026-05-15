@@ -20,7 +20,7 @@ export function HistoryPanel({
     <div className="min-w-0 rounded-xl border bg-card text-card-foreground shadow">
       <div className="space-y-3.5 p-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-semibold leading-none tracking-tight">Local history</h2>
+          <h2 className="text-xl font-semibold leading-tight tracking-normal">Local history</h2>
           <div className="flex items-center gap-1.5">
             {history.length > 0 ? (
               <button
@@ -50,12 +50,13 @@ export function HistoryPanel({
               >
                 <button
                   type="button"
+                  title={`Load history entry: ${item.label}`}
                   className="inline-flex h-auto flex-1 cursor-pointer items-start justify-start gap-2 whitespace-normal wrap-break-word rounded-md px-3 py-2 text-left text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
                   onClick={() => onSelectHistoryItem(item)}
                 >
                   <span className="grid min-w-0 gap-0.5">
-                    <strong className="text-lg">{item.label}</strong>
-                    <span className="text-base text-muted-foreground">
+                    <strong className="text-base">{item.label}</strong>
+                    <span className="text-sm text-muted-foreground">
                       {new Date(item.createdAt).toLocaleString()}
                     </span>
                   </span>

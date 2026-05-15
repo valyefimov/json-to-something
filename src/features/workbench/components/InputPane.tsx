@@ -1,8 +1,9 @@
-import { Trash2 } from 'lucide-react';
+import { Clipboard, PanelRight, Trash2, Wand2 } from 'lucide-react';
 import Prism from 'prismjs';
 import SimpleCodeEditor from 'react-simple-code-editor';
 import type { Mode } from '@/features/workbench/types';
 import type { ComponentType, CSSProperties } from 'react';
+import { ModeSwitch } from '@/features/workbench/components/ModeSwitch';
 import { CODE_FONT } from '@/features/workbench/constants';
 
 const Editor = ((SimpleCodeEditor as unknown as { default?: unknown }).default ??
@@ -23,7 +24,11 @@ type InputPaneProps = {
   inputLanguage: 'json' | 'yaml';
   mode: Mode;
   onClear: () => void;
+  onFormat: () => void;
   onInputChange: (value: string) => void;
+  onMinify: () => void;
+  onPaste: () => void;
+  onSwitchMode: (mode: Mode) => void;
   status: string;
   valid: boolean;
 };
@@ -33,13 +38,49 @@ export function InputPane({
   inputLanguage,
   mode,
   onClear,
+  onFormat,
   onInputChange,
+  onMinify,
+  onPaste,
+  onSwitchMode,
   status,
   valid
 }: InputPaneProps) {
   return (
     <div className="flex min-h-155 flex-col overflow-hidden rounded-xl border bg-card text-card-foreground shadow">
       <div className="flex flex-col space-y-1.5 p-6">
+        <div className="mb-2 flex flex-wrap items-center justify-between gap-2.5">
+          <ModeSwitch mode={mode} onSwitchMode={onSwitchMode} />
+          <div className="flex flex-wrap items-center gap-1.5 max-[680px]:w-full">
+            <button
+              type="button"
+              onClick={onPaste}
+              title="Paste JSON"
+              className="inline-flex h-9 cursor-pointer items-center justify-center gap-1.5 whitespace-nowrap rounded-lg bg-primary px-3 text-[13px] font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 max-[980px]:px-2.5 [&_svg]:pointer-events-none [&_svg]:size-[15px] [&_svg]:shrink-0"
+            >
+              <Clipboard size={15} />
+              <span className="max-[980px]:hidden">Paste</span>
+            </button>
+            <button
+              type="button"
+              onClick={onFormat}
+              title="Format JSON"
+              className="inline-flex h-9 cursor-pointer items-center justify-center gap-1.5 whitespace-nowrap rounded-lg px-3 text-[13px] font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 max-[980px]:px-2.5 [&_svg]:pointer-events-none [&_svg]:size-[15px] [&_svg]:shrink-0"
+            >
+              <Wand2 size={15} />
+              <span className="max-[980px]:hidden">Format</span>
+            </button>
+            <button
+              type="button"
+              onClick={onMinify}
+              title="Minify JSON"
+              className="inline-flex h-9 cursor-pointer items-center justify-center gap-1.5 whitespace-nowrap rounded-lg px-3 text-[13px] font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 max-[980px]:px-2.5 [&_svg]:pointer-events-none [&_svg]:size-[15px] [&_svg]:shrink-0"
+            >
+              <PanelRight size={15} />
+              <span className="max-[980px]:hidden">Minify</span>
+            </button>
+          </div>
+        </div>
         <div>
           <h2 className="text-2xl font-semibold leading-none tracking-tight">
             {mode === 'types' ? 'Input JSON' : 'Input YAML'}

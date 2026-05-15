@@ -19,6 +19,7 @@ export function ModeSwitch({ mode, onSwitchMode }: ModeSwitchProps) {
           type="button"
           role="tab"
           aria-selected={mode === value}
+          title={value === 'types' ? 'Switch to JSON to Types mode' : 'Switch to YAML to Envoy/Nginx mode'}
           onClick={() => onSwitchMode(value)}
           className={cn(
             'inline-flex cursor-pointer items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all max-[680px]:flex-1 max-[680px]:px-2',

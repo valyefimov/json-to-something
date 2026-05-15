@@ -30,9 +30,9 @@ export function OutputPane({
 }: OutputPaneProps) {
   return (
     <div className="flex min-h-155 flex-col overflow-hidden rounded-xl border bg-card text-card-foreground shadow">
-      <div className="flex flex-col gap-2 p-6 md:flex-row md:items-center">
+      <div className="flex items-center gap-2 p-6">
         <div
-          className="inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground"
+          className="inline-flex h-10 min-w-0 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground"
           aria-label="Output formats"
           role="tablist"
         >
@@ -42,6 +42,7 @@ export function OutputPane({
               type="button"
               role="tab"
               aria-selected={activeTab === tab}
+              title={`Show ${getTabLabel(tab)} output`}
               className={cn(
                 'inline-flex cursor-pointer items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all',
                 activeTab === tab
@@ -54,7 +55,7 @@ export function OutputPane({
             </button>
           ))}
         </div>
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex shrink-0 items-center gap-2">
           <button
             type="button"
             className="inline-flex h-10 w-10 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
