@@ -46,44 +46,33 @@ export function InputPane({
   status,
   valid
 }: InputPaneProps) {
+  const iconButtonClassName =
+    'inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-[15px] [&_svg]:shrink-0';
+
+  const actions = [
+    { icon: Clipboard, onClick: onPaste, title: 'Paste JSON' },
+    { icon: Wand2, onClick: onFormat, title: 'Format JSON' },
+    { icon: PanelRight, onClick: onMinify, title: 'Minify JSON' },
+    { icon: Trash2, onClick: onClear, title: 'Clear input' }
+  ] as const;
+
   return (
     <div className="flex min-h-155 flex-col overflow-hidden rounded-xl border bg-card text-card-foreground shadow">
       <div className="flex flex-col space-y-1.5 p-6">
         <div className="mb-2 flex flex-wrap items-center justify-between gap-2.5">
           <ModeSwitch mode={mode} onSwitchMode={onSwitchMode} />
           <div className="flex flex-wrap items-center gap-1.5 max-[680px]:w-full">
-            <button
-              type="button"
-              onClick={onPaste}
-              title="Paste JSON"
-              className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-[15px] [&_svg]:shrink-0"
-            >
-              <Clipboard size={15} />
-            </button>
-            <button
-              type="button"
-              onClick={onFormat}
-              title="Format JSON"
-              className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-[15px] [&_svg]:shrink-0"
-            >
-              <Wand2 size={15} />
-            </button>
-            <button
-              type="button"
-              onClick={onMinify}
-              title="Minify JSON"
-              className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-[15px] [&_svg]:shrink-0"
-            >
-              <PanelRight size={15} />
-            </button>
-            <button
-              type="button"
-              onClick={onClear}
-              title="Clear input"
-              className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-[15px] [&_svg]:shrink-0"
-            >
-              <Trash2 size={15} />
-            </button>
+            {actions.map(({ icon: Icon, onClick, title }) => (
+              <button
+                key={title}
+                type="button"
+                onClick={onClick}
+                title={title}
+                className={iconButtonClassName}
+              >
+                <Icon size={15} />
+              </button>
+            ))}
           </div>
         </div>
         <div>
