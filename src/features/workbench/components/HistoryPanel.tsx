@@ -1,7 +1,5 @@
 import { History, Trash2, X } from 'lucide-react';
 import type { HistoryItem, Mode } from '@/features/workbench/types';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardTitle } from '@/components/ui/card';
 
 type HistoryPanelProps = {
   history: HistoryItem[];
@@ -19,22 +17,20 @@ export function HistoryPanel({
   onSelectHistoryItem
 }: HistoryPanelProps) {
   return (
-    <Card className="min-w-0">
-      <CardContent className="space-y-3.5">
+    <div className="min-w-0 rounded-xl border bg-card text-card-foreground shadow">
+      <div className="space-y-3.5 p-6">
         <div className="flex items-center justify-between">
-          <CardTitle>Local history</CardTitle>
+          <h2 className="text-2xl font-semibold leading-none tracking-tight">Local history</h2>
           <div className="flex items-center gap-1.5">
             {history.length > 0 ? (
-              <Button
+              <button
                 type="button"
-                variant="ghost"
-                size="icon"
-                className="h-8 w-8 rounded-md"
+                className="inline-flex h-8 w-8 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
                 title="Clear all history"
                 onClick={onClearHistory}
               >
                 <Trash2 size={16} />
-              </Button>
+              </button>
             ) : null}
             <History size={17} />
           </div>
@@ -52,10 +48,9 @@ export function HistoryPanel({
                 key={item.id}
                 className="flex items-start gap-1 rounded-md border border-border bg-secondary/30 p-1"
               >
-                <Button
+                <button
                   type="button"
-                  variant="ghost"
-                  className="h-auto flex-1 items-start justify-start whitespace-normal break-words rounded-md px-3 py-2 text-left"
+                  className="inline-flex h-auto flex-1 cursor-pointer items-start justify-start gap-2 whitespace-normal wrap-break-word rounded-md px-3 py-2 text-left text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
                   onClick={() => onSelectHistoryItem(item)}
                 >
                   <span className="grid min-w-0 gap-0.5">
@@ -64,22 +59,20 @@ export function HistoryPanel({
                       {new Date(item.createdAt).toLocaleString()}
                     </span>
                   </span>
-                </Button>
-                <Button
+                </button>
+                <button
                   type="button"
-                  variant="ghost"
-                  size="icon"
-                  className="h-8 w-8 rounded-md"
+                  className="inline-flex h-8 w-8 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
                   title="Delete history entry"
                   onClick={() => onDeleteHistoryItem(item.id)}
                 >
                   <X size={15} />
-                </Button>
+                </button>
               </div>
             ))
           )}
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

@@ -3,7 +3,7 @@ import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
-  darkMode: ['class'],
+  darkMode: ['class', '[data-theme="dark"]'],
   plugins: [tailwindcssAnimate],
   theme: {
     extend: {
@@ -13,11 +13,19 @@ const config: Config = {
         sm: 'calc(0.5rem - 4px)'
       },
       colors: {
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))'
+        },
         background: 'hsl(var(--background))',
         border: 'hsl(var(--border))',
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))'
         },
         foreground: 'hsl(var(--foreground))',
         input: 'hsl(var(--input))',

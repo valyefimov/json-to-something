@@ -9,7 +9,7 @@ type ModeSwitchProps = {
 export function ModeSwitch({ mode, onSwitchMode }: ModeSwitchProps) {
   return (
     <div
-      className="inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground"
+      className="inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground max-[680px]:w-full"
       aria-label="Modes"
       role="tablist"
     >
@@ -21,7 +21,7 @@ export function ModeSwitch({ mode, onSwitchMode }: ModeSwitchProps) {
           aria-selected={mode === value}
           onClick={() => onSwitchMode(value)}
           className={cn(
-            'inline-flex cursor-pointer items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all',
+            'inline-flex cursor-pointer items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all max-[680px]:flex-1 max-[680px]:px-2',
             mode === value
               ? 'bg-background text-foreground shadow-sm'
               : 'text-muted-foreground hover:text-foreground'

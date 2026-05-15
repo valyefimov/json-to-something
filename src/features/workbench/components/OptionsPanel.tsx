@@ -1,7 +1,5 @@
 import type { Mode } from '@/features/workbench/types';
 import type { GeneratorOptions } from '@/lib/transform';
-import { Card, CardContent, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 
 type OptionsPanelProps = {
   mode: Mode;
@@ -14,14 +12,15 @@ type OptionsPanelProps = {
 
 export function OptionsPanel({ mode, onUpdateOption, options }: OptionsPanelProps) {
   return (
-    <Card className="min-w-0">
-      <CardContent className="space-y-3.5">
-        <CardTitle>Options</CardTitle>
+    <div className="min-w-0 rounded-xl border bg-card text-card-foreground shadow">
+      <div className="space-y-3.5 p-6">
+        <h2 className="text-2xl font-semibold leading-none tracking-tight">Options</h2>
         {mode === 'types' ? (
           <>
             <label className="grid gap-2 text-sm text-muted-foreground">
               <span>Root type name</span>
-              <Input
+              <input
+                className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
                 value={options.rootName}
                 onChange={(event) => onUpdateOption('rootName', event.target.value)}
               />
@@ -80,7 +79,7 @@ export function OptionsPanel({ mode, onUpdateOption, options }: OptionsPanelProp
             Envoy from one source config.
           </p>
         )}
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

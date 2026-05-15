@@ -2,6 +2,7 @@
 
 Developer toolbox that runs fully in the browser:
 
+- Live app: [https://json2smth.yefimov.tech/](https://json2smth.yefimov.tech/)
 - `JSON -> TypeScript`
 - `JSON -> Zod`
 - `JSON -> JSON Schema`
@@ -32,7 +33,7 @@ Your input data is not sent to any backend.
 
 - React 19 + TypeScript + Vite
 - Tailwind CSS v4
-- shadcn/ui primitives (Radix-based)
+- shadcn-style Tailwind component patterns
 - PrismJS for highlighting
 - Vitest + Testing Library
 
@@ -64,22 +65,3 @@ npm run format:check
 - `Ctrl/Cmd + Shift + M` -> Minify/compact input
 - `Ctrl/Cmd + Shift + S` -> Copy share link
 - `Ctrl/Cmd + Shift + C` -> Copy output
-
-## Project Structure
-
-```text
-src/
-  components/ui/                # shadcn-style UI primitives
-  features/workbench/           # app UI and state hook
-    components/
-    hooks/
-  lib/
-    transform.ts                # JSON inference + generators
-    configConverter.ts          # YAML -> Nginx/Envoy
-    state.ts                    # hash/localStorage helpers
-```
-
-## Notes
-
-- TypeScript path alias is enabled: `@/* -> src/*`
-- The project targets modern browsers (`ESNext`)
