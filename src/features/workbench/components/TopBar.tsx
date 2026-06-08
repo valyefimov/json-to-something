@@ -24,10 +24,10 @@ export function TopBar({
         </div>
         <div>
           <h1 className="text-[clamp(1.55rem,3vw,2.35rem)] font-bold leading-[1.05] tracking-normal max-[680px]:text-[2rem]">
-            JSON-to-Something
+            JSON to TypeScript, Zod, JSON Schema and YAML config converter
           </h1>
           <p className="text-muted-foreground max-[680px]:text-sm">
-            Type generator and config converter in your browser.
+            JSON-to-Something converts developer payloads locally in your browser.
           </p>
         </div>
       </div>

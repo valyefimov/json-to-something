@@ -7,6 +7,7 @@
     <meta name="googlebot" content="index, follow, max-image-preview:large" />
     <meta name="author" content="JSON-to-Something" />
     <meta name="application-name" content="JSON-to-Something" />
+    <meta name="theme-color" content="#1f7a54" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta
       name="description"
@@ -31,7 +32,10 @@
       content="Convert JSON objects to TypeScript types, Zod, and JSON Schema with support for nullable fields and string values, plus YAML to Nginx and Envoy."
     />
     <meta property="og:url" content="https://json2smth.yefimov.tech/" />
-    <meta property="og:image" content="https://json2smth.yefimov.tech/og-image.png" />
+    <meta property="og:image" content="https://json2smth.yefimov.tech/social-card.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="1200" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@valyefimov" />
@@ -44,7 +48,7 @@
       name="twitter:description"
       content="Convert JSON objects to TypeScript types, Zod, and JSON Schema with support for nullable fields and string values, plus YAML to Nginx and Envoy."
     />
-    <meta name="twitter:image" content="https://json2smth.yefimov.tech/og-image.png" />
+    <meta name="twitter:image" content="https://json2smth.yefimov.tech/social-card.png" />
 
     <title>JSON-to-Something | JSON to TypeScript, Zod, YAML Converter</title>
 
@@ -107,7 +111,9 @@
           "YAML to Nginx config conversion",
           "YAML to Envoy config conversion",
           "Client-side processing for privacy"
-        ]
+        ],
+        "softwareHelp": "https://github.com/valyefimov/json-to-something",
+        "sameAs": ["https://github.com/valyefimov/json-to-something"]
       }
     </script>
     <script type="application/ld+json">
@@ -137,6 +143,7 @@
   </head>
   <body>
     <div id="root">
+      <!--app-html-->
       <main>
         <h1>JSON-to-Something</h1>
         <p>
@@ -165,6 +172,7 @@
           </p>
         </section>
       </main>
+      <!--/app-html-->
     </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
