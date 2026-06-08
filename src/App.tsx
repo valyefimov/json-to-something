@@ -105,6 +105,49 @@ export default function App() {
         <ExamplesPanel mode={mode} onSelect={setInput} />
       </section>
 
+      <section
+        aria-labelledby="about-json-to-something"
+        className="mt-3.5 rounded-xl border bg-card p-6 text-card-foreground shadow"
+      >
+        <div className="grid gap-5 md:grid-cols-[1.05fr_1fr]">
+          <div>
+            <h2 id="about-json-to-something" className="text-2xl font-semibold leading-tight">
+              Convert JSON to TypeScript, Zod, and JSON Schema
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground">
+              JSON-to-Something is a browser-based developer tool for turning example JSON objects
+              into typed contracts. Paste JSON to generate TypeScript interfaces, Zod validation
+              schemas, or JSON Schema with options for nullable fields and string values.
+            </p>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground">
+              The config converter also turns YAML service definitions into Nginx and Envoy output,
+              so you can move from structured input to deployable configuration without leaving the
+              page.
+            </p>
+          </div>
+          <div className="grid gap-3 text-sm leading-6 text-muted-foreground">
+            <div>
+              <h3 className="font-semibold text-foreground">Runs locally</h3>
+              <p>
+                Parsing, generated output, history, and share-link encoding stay in the browser.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-foreground">Useful outputs</h3>
+              <p>
+                Generate TypeScript, Zod, JSON Schema, Nginx, and Envoy formats from one workbench.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-foreground">Fast workflow</h3>
+              <p>
+                Format, minify, copy, download, and share conversions without server round trips.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className="mt-6 flex flex-wrap items-center justify-between gap-2 border-t border-border/70 pt-4 text-xs leading-5 text-muted-foreground">
         <span>
           Created by Valentyn Yefimov.{' '}
@@ -118,7 +161,9 @@ export default function App() {
           </a>
           .
         </span>
-        <span className="font-mono text-[11px] text-muted-foreground/80">v{packageJson.version}</span>
+        <span className="font-mono text-[11px] text-muted-foreground/80">
+          v{packageJson.version}
+        </span>
       </footer>
     </main>
   );

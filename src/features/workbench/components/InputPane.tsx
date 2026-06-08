@@ -50,10 +50,25 @@ export function InputPane({
     'inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-[15px] [&_svg]:shrink-0';
 
   const actions = [
-    { icon: Clipboard, onClick: onPaste, title: 'Paste JSON' },
-    { icon: Wand2, onClick: onFormat, title: 'Format JSON' },
-    { icon: PanelRight, onClick: onMinify, title: 'Minify JSON' },
-    { icon: Trash2, onClick: onClear, title: 'Clear input' }
+    {
+      icon: Clipboard,
+      label: 'Paste',
+      onClick: onPaste,
+      title: `Paste ${inputLanguage.toUpperCase()}`
+    },
+    {
+      icon: Wand2,
+      label: 'Format',
+      onClick: onFormat,
+      title: `Format ${inputLanguage.toUpperCase()}`
+    },
+    {
+      icon: PanelRight,
+      label: 'Minify',
+      onClick: onMinify,
+      title: `Minify ${inputLanguage.toUpperCase()}`
+    },
+    { icon: Trash2, label: 'Clear input', onClick: onClear, title: 'Clear input' }
   ] as const;
 
   return (
@@ -62,11 +77,12 @@ export function InputPane({
         <div className="mb-2 flex flex-wrap items-center justify-between gap-2.5">
           <ModeSwitch mode={mode} onSwitchMode={onSwitchMode} />
           <div className="flex flex-wrap items-center gap-1.5 max-[680px]:w-full">
-            {actions.map(({ icon: Icon, onClick, title }) => (
+            {actions.map(({ icon: Icon, label, onClick, title }) => (
               <button
                 key={title}
                 type="button"
                 onClick={onClick}
+                aria-label={label}
                 title={title}
                 className={iconButtonClassName}
               >
