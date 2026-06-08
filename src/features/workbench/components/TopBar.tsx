@@ -50,7 +50,7 @@ export function TopBar({
           aria-controls="instructions-panel"
           onClick={onToggleInstructions}
           title={instructionsOpen ? 'Hide instructions' : 'Show instructions'}
-          className="inline-flex h-11 w-11 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-emerald-500/40 bg-emerald-500/10 text-emerald-300 transition-colors hover:bg-emerald-500/15 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 max-[680px]:h-10 max-[680px]:w-10 max-[680px]:justify-self-start [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
+          className="inline-flex h-11 w-11 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-primary/40 bg-primary/10 text-[hsl(var(--success))] transition-colors hover:bg-primary/15 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 max-[680px]:h-10 max-[680px]:w-10 max-[680px]:justify-self-start [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
         >
           <HelpCircle size={17} />
         </button>

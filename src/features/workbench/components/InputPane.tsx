@@ -95,7 +95,13 @@ export function InputPane({
           <h2 className="text-2xl font-semibold leading-none tracking-tight">
             {mode === 'types' ? 'Input JSON' : 'Input YAML'}
           </h2>
-          <p className={valid ? 'mt-1 text-sm text-emerald-400' : 'mt-1 text-sm text-red-400'}>
+          <p
+            className={
+              valid
+                ? 'mt-1 text-sm text-[hsl(var(--success))]'
+                : 'mt-1 text-sm text-[hsl(var(--danger))]'
+            }
+          >
             {status}
           </p>
         </div>

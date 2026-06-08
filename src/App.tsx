@@ -52,9 +52,9 @@ export default function App() {
         <section className="mb-4">
           <div
             id="instructions-panel"
-            className="flex gap-3 rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-4 py-3"
+            className="flex gap-3 rounded-lg border border-primary/40 bg-primary/10 px-4 py-3"
           >
-            <HelpCircle size={20} className="mt-0.5 flex-none text-emerald-300" />
+            <HelpCircle size={20} className="mt-0.5 flex-none text-[hsl(var(--success))]" />
             <div className="grid gap-2">
               <p className="text-[15px] font-medium leading-6 text-foreground">
                 Your data stays local. Parsing, conversion, history, and link encoding all run
@@ -164,9 +164,7 @@ export default function App() {
           </article>
           <article>
             <h3 className="font-semibold text-foreground">2. Choose the output format</h3>
-            <p>
-              Switch between TypeScript, Zod, JSON Schema, Nginx, and Envoy from one workbench.
-            </p>
+            <p>Switch between TypeScript, Zod, JSON Schema, Nginx, and Envoy from one workbench.</p>
           </article>
           <article>
             <h3 className="font-semibold text-foreground">3. Copy, download, or share</h3>
@@ -193,7 +191,9 @@ export default function App() {
             </p>
           </article>
           <article>
-            <h3 className="font-semibold text-foreground">Does JSON-to-Something upload my data?</h3>
+            <h3 className="font-semibold text-foreground">
+              Does JSON-to-Something upload my data?
+            </h3>
             <p>
               No. Parsing, conversion, history, and share-link encoding run in the browser, so
               pasted JSON and YAML stay on your device.

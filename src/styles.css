@@ -20,26 +20,30 @@
     --border: 221 12% 24%;
     --input: 221 12% 24%;
     --ring: 212 89% 66%;
+    --success: 151 59% 50%;
+    --danger: 0 72% 62%;
   }
 
   :root[data-theme='light'] {
-    --background: 46 26% 95%;
-    --foreground: 222 13% 12%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 13% 12%;
-    --primary: 153 82% 34%;
+    --background: 42 20% 88%;
+    --foreground: 220 18% 12%;
+    --card: 42 22% 93%;
+    --card-foreground: 220 18% 12%;
+    --primary: 154 64% 27%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 45 24% 93%;
-    --secondary-foreground: 222 13% 12%;
-    --accent: 45 24% 90%;
-    --accent-foreground: 222 13% 12%;
-    --destructive: 0 72% 51%;
+    --secondary: 42 18% 82%;
+    --secondary-foreground: 220 18% 12%;
+    --accent: 43 18% 78%;
+    --accent-foreground: 220 18% 12%;
+    --destructive: 0 66% 42%;
     --destructive-foreground: 0 0% 100%;
-    --muted: 47 20% 89%;
-    --muted-foreground: 215 9% 44%;
-    --border: 46 20% 80%;
-    --input: 46 20% 80%;
-    --ring: 214 73% 49%;
+    --muted: 43 17% 80%;
+    --muted-foreground: 219 13% 36%;
+    --border: 40 13% 67%;
+    --input: 40 13% 63%;
+    --ring: 154 64% 27%;
+    --success: 154 64% 27%;
+    --danger: 0 66% 42%;
   }
 
   * {
@@ -56,7 +60,9 @@
       BlinkMacSystemFont,
       'Segoe UI',
       sans-serif;
-    background-image: linear-gradient(180deg, hsl(var(--secondary) / 0.48), transparent 300px);
+    background-image:
+      radial-gradient(circle at top left, hsl(var(--primary) / 0.12), transparent 320px),
+      linear-gradient(180deg, hsl(var(--secondary) / 0.72), transparent 360px);
     min-height: 100vh;
     margin: 0;
     min-width: 320px;
@@ -136,5 +142,60 @@
 
   .token.punctuation {
     color: color-mix(in srgb, hsl(var(--foreground)) 65%, hsl(var(--muted-foreground)));
+  }
+
+  :root[data-theme='light'] .code-editor,
+  :root[data-theme='light'] pre[aria-label='Generated output'] {
+    background: hsl(43 24% 91%);
+  }
+
+  :root[data-theme='light'] .token.comment,
+  :root[data-theme='light'] .token.prolog,
+  :root[data-theme='light'] .token.doctype,
+  :root[data-theme='light'] .token.cdata {
+    color: #596272;
+  }
+
+  :root[data-theme='light'] .token.property,
+  :root[data-theme='light'] .token.attr-name,
+  :root[data-theme='light'] .token.constant,
+  :root[data-theme='light'] .token.symbol,
+  :root[data-theme='light'] .token.deleted {
+    color: #b31950;
+  }
+
+  :root[data-theme='light'] .token.boolean,
+  :root[data-theme='light'] .token.number {
+    color: #a45100;
+  }
+
+  :root[data-theme='light'] .token.selector,
+  :root[data-theme='light'] .token.attr-value,
+  :root[data-theme='light'] .token.string,
+  :root[data-theme='light'] .token.char,
+  :root[data-theme='light'] .token.builtin,
+  :root[data-theme='light'] .token.inserted {
+    color: #147a3e;
+  }
+
+  :root[data-theme='light'] .token.operator,
+  :root[data-theme='light'] .token.entity,
+  :root[data-theme='light'] .token.url,
+  :root[data-theme='light'] .token.variable {
+    color: #1b62a3;
+  }
+
+  :root[data-theme='light'] .token.atrule,
+  :root[data-theme='light'] .token.keyword {
+    color: #3d53bf;
+  }
+
+  :root[data-theme='light'] .token.function,
+  :root[data-theme='light'] .token.class-name {
+    color: #087070;
+  }
+
+  :root[data-theme='light'] .token.punctuation {
+    color: #3d4451;
   }
 }
