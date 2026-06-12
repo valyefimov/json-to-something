@@ -1,5 +1,7 @@
-import { compressToEncodedURIComponent, decompressFromEncodedURIComponent } from 'lz-string';
+import lzString from 'lz-string';
 import { defaultOptions, type GeneratorOptions } from '@/lib/transform';
+
+const { compressToEncodedURIComponent, decompressFromEncodedURIComponent } = lzString;
 
 export type EncodedState = {
   input: string;
@@ -72,6 +74,8 @@ export function normalizeOptions(options: Partial<GeneratorOptions>): GeneratorO
 }
 
 export function safeReadStorage<T>(key: string, fallback: T): T {
+  if (typeof window === 'undefined') return fallback;
+
   try {
     const raw = localStorage.getItem(key);
     return raw ? (JSON.parse(raw) as T) : fallback;
@@ -81,6 +85,8 @@ export function safeReadStorage<T>(key: string, fallback: T): T {
 }
 
 export function safeWriteStorage(key: string, value: unknown) {
+  if (typeof window === 'undefined') return;
+
   try {
     localStorage.setItem(key, JSON.stringify(value));
   } catch {

@@ -52,9 +52,9 @@ export default function App() {
         <section className="mb-4">
           <div
             id="instructions-panel"
-            className="flex gap-3 rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-4 py-3"
+            className="flex gap-3 rounded-lg border border-primary/40 bg-primary/10 px-4 py-3"
           >
-            <HelpCircle size={20} className="mt-0.5 flex-none text-emerald-300" />
+            <HelpCircle size={20} className="mt-0.5 flex-none text-[hsl(var(--success))]" />
             <div className="grid gap-2">
               <p className="text-[15px] font-medium leading-6 text-foreground">
                 Your data stays local. Parsing, conversion, history, and link encoding all run
@@ -145,6 +145,60 @@ export default function App() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section
+        aria-labelledby="json-converter-workflow"
+        className="mt-3.5 rounded-xl border bg-card p-6 text-card-foreground shadow"
+      >
+        <h2 id="json-converter-workflow" className="text-2xl font-semibold leading-tight">
+          How the JSON and YAML converter works
+        </h2>
+        <div className="mt-4 grid gap-4 text-sm leading-6 text-muted-foreground md:grid-cols-3">
+          <article>
+            <h3 className="font-semibold text-foreground">1. Paste structured input</h3>
+            <p>
+              Add a JSON object for type generation or a YAML service definition for config output.
+            </p>
+          </article>
+          <article>
+            <h3 className="font-semibold text-foreground">2. Choose the output format</h3>
+            <p>Switch between TypeScript, Zod, JSON Schema, Nginx, and Envoy from one workbench.</p>
+          </article>
+          <article>
+            <h3 className="font-semibold text-foreground">3. Copy, download, or share</h3>
+            <p>
+              Format input, minify payloads, copy generated code, download files, or share a link.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section
+        aria-labelledby="json-to-something-faq"
+        className="mt-3.5 rounded-xl border bg-card p-6 text-card-foreground shadow"
+      >
+        <h2 id="json-to-something-faq" className="text-2xl font-semibold leading-tight">
+          JSON-to-Something FAQ
+        </h2>
+        <div className="mt-4 grid gap-4 text-sm leading-6 text-muted-foreground md:grid-cols-2">
+          <article>
+            <h3 className="font-semibold text-foreground">What can JSON-to-Something convert?</h3>
+            <p>
+              It converts JSON objects into TypeScript interfaces, Zod schemas, and JSON Schema. It
+              also converts YAML service definitions into Nginx and Envoy configuration.
+            </p>
+          </article>
+          <article>
+            <h3 className="font-semibold text-foreground">
+              Does JSON-to-Something upload my data?
+            </h3>
+            <p>
+              No. Parsing, conversion, history, and share-link encoding run in the browser, so
+              pasted JSON and YAML stay on your device.
+            </p>
+          </article>
         </div>
       </section>
 

@@ -20,7 +20,11 @@ describe('App', () => {
   it('renders the editor and generated output tabs', () => {
     render(<App />);
 
-    expect(screen.getByRole('heading', { name: 'JSON-to-Something' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', {
+        name: 'JSON to TypeScript, Zod, JSON Schema and YAML config converter'
+      })
+    ).toBeInTheDocument();
     expect(screen.getByRole('textbox', { name: 'JSON input' })).toBeInTheDocument();
     expect(screen.getByRole('tab', { name: 'TypeScript' })).toBeInTheDocument();
     expect(screen.getByLabelText('Generated output')).toHaveTextContent('export interface Root');
